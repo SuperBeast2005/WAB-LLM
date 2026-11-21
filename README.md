@@ -15,12 +15,12 @@ Die quantisierten Varianten wurden mit `llama-quantize` auf `Q4_K_M` quantisiert
 
 Die GGUF-Dateien in `gguf-models` haben folgende Größen:
 
-| GGUF-Datei                  |  Größe |
-| --------------------------- | -------: |
-| `qwen-3.5-2B-Q4_K_M.gguf` |  1,31 GB |
-| `qwen-3.5-2B.gguf`        |  3,90 GB |
-| `qwen-3.5-9B-Q4_K_M.gguf` |  5,78 GB |
-| `qwen-3.5-9B.gguf`        | 18,41 GB |
+| GGUF-Datei                  |  Größe | Größenreduktion |
+| --------------------------- | -------: | --------------: |
+| `qwen-3.5-2B-Q4_K_M.gguf` |  1,31 GB | 66,4 % |
+| `qwen-3.5-2B.gguf`        |  3,90 GB | — |
+| `qwen-3.5-9B-Q4_K_M.gguf` |  5,78 GB | 68,6 % |
+| `qwen-3.5-9B.gguf`        | 18,41 GB | — |
 
 Für den Betrieb des 9B-Modells mit Kontextlängen von 128k bis 256k Tokens wurde
 `q4_0` wegen des begrenzten 8-GB-VRAMs verwendet. Für den Benchmark waren diese Größen des Kontextfenster nicht notwendig, jedoch wurde geschaut wie gut das 9B-Modell unter diesem KV-Cache performt.
