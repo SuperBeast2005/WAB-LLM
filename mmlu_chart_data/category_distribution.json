@@ -1,0 +1,58 @@
+[
+  {
+    "category": "law",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "psychology",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "business",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "history",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "philosophy",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "health",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "biology",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "chemistry",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "math",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "physics",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "economics",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "computer science",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "engineering",
+    "share_percent": 7.142857142857142
+  },
+  {
+    "category": "other",
+    "share_percent": 7.142857142857142
+  }
+]

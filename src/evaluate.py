@@ -9,19 +9,22 @@ import warnings
 from datetime import datetime
 from pathlib import Path
 
+import matplotlib.pyplot as plt
+
 
 # Datenordner neben dem Quellcode, damit das Skript von jedem Arbeitsverzeichnis läuft.
 DATA_DIR = Path(__file__).resolve().parents[1] / "bench-data"
+SUMMARY_JSON_PATH = Path(__file__).resolve().parents[1] / "evaluation_summary.json"
 
 # Anzeigename jeder CSV-Metrik mit dem Anfang ihres Dateinamens.
 CSV_METRICS = {
-    "Total Tokens": "Total Tokens-data",
-    "GPU-Last (%)": "GPU-Last in %-data",
-    "CPU-Last (%)": "CPU-Auslastung in %-data",
-    "RAM-Verbrauch (GB)": "RAM-Usage (in GB)-data",
     "VRAM-Verbrauch (GB)": "VRAM-Usage in GB-data",
+    "GPU-Last (%)": "GPU-Last in %-data",
     "GPU-Temperatur (°C)": "GPU-Temperatur °C-data",
+    "RAM-Verbrauch (GB)": "RAM-Usage (in GB)-data",
+    "CPU-Last (%)": "CPU-Auslastung in %-data",
     "Lüftergeschwindigkeit (RPM)": "Lüfter-Geschwindigkeit in RPM-data",
+    "Total Tokens": "Total Tokens-data",
 }
 
 # ANSI-Farbcodes entfernen; das Log-Zeitformat ist Minuten.Sekunden.ms.us.
@@ -40,13 +43,16 @@ SCORE_METRICS = {
     "MMLU-Pro-500": "exact_match",
 }
 
+DURATION_METRIC = "Ausführungsdauer/E2E (Stunden:Minuten)"
+DURATION_JSON_METRIC = "Ausführungsdauer/E2E (Stunden)"
+
 
 def canonical_model_name(directory_name: str) -> str:
     """Vereinheitlicht Modellordnernamen und fasst alle 9B-Varianten zusammen."""
     normalized_name = directory_name.lower().replace("_", "-")
 
     if normalized_name.startswith("qwen3.5-9b"):
-        return "Qwen3.5-9B"
+        return "Qwen3.5-9B Q4_K_M"
     if normalized_name.startswith("qwen3.5-2b-q4-k-m"):
         return "Qwen3.5-2B-Q4_K_M"
     if normalized_name.startswith("qwen3.5-2b"):
@@ -117,6 +123,27 @@ def read_csv_duration_seconds(model_dir: Path) -> float:
     return (max(timestamps) - min(timestamps)).total_seconds()
 
 
+def format_duration(seconds: float) -> str:
+    """Formatiert Sekunden als Stunden und Minuten, auf volle Minuten gerundet."""
+    total_minutes = int(seconds / 60 + 0.5)
+    hours, minutes = divmod(total_minutes, 60)
+    if hours == 0:
+        return f"{minutes} Min."
+    return f"{hours} Std. {minutes:02d} Min."
+
+
+def relative_dispersion_percent(mean: float, standard_deviation: float) -> float:
+    """Berechnet die relative Standardabweichung in Prozent."""
+    if mean == 0:
+        if standard_deviation == 0:
+            return 0.0
+        raise ValueError(
+            "Die relative Streuung ist bei einem Mittelwert von null "
+            "und positiver Standardabweichung nicht definiert."
+        )
+    return standard_deviation / abs(mean) * 100
+
+
 def read_tps_log_values(
     model_dir: Path, execution_duration: float
 ) -> list[float] | None:
@@ -172,7 +199,7 @@ def read_tps_log_values(
 
 
 def read_benchmark_score(model_dir: Path, benchmark: str) -> float:
-    """Liest den passenden Pass@1- oder Exact-Match-Score aus der Ergebnis-JSON."""
+    """Liest den passenden Pass@1- oder Exact-Match-Score als Prozentwert."""
     result_files = sorted(model_dir.glob("results_*.json"))
     if len(result_files) != 1:
         raise ValueError(
@@ -198,7 +225,7 @@ def read_benchmark_score(model_dir: Path, benchmark: str) -> float:
             f"Score '{score_prefix}' fehlt oder ist ungültig in "
             f"'{result_files[0]}'."
         )
-    return score
+    return score * 100
 
 
 def evaluate_bench_data(
@@ -250,11 +277,11 @@ def evaluate_bench_data(
                 )
 
             for model_name, model_dir in run_models.items():
-                score_key = "Pass@1" if benchmark == "HumanEval" else "Exact Match"
+                score_key = "Pass@1 (%)" if benchmark == "HumanEval" else "Accuracy (%)"
                 if model_name not in benchmark_results:
                     benchmark_results[model_name] = {score_key: []}
                     benchmark_results[model_name]["TPS"] = []
-                    benchmark_results[model_name]["Ausführungsdauer (Sekunden)"] = []
+                    benchmark_results[model_name][DURATION_METRIC] = []
                     benchmark_results[model_name].update(
                         {metric: [] for metric in CSV_METRICS}
                     )
@@ -264,7 +291,7 @@ def evaluate_bench_data(
                 score = read_benchmark_score(model_dir, benchmark)
                 model_metrics[score_key].append(score)
                 duration = read_csv_duration_seconds(model_dir)
-                model_metrics["Ausführungsdauer (Sekunden)"].append(duration)
+                model_metrics[DURATION_METRIC].append(duration)
                 tps_values = read_tps_log_values(model_dir, duration)
                 if tps_values is not None:
                     model_metrics["TPS"].append(statistics.mean(tps_values))
@@ -302,24 +329,29 @@ def evaluate_bench_data(
                         f"{len(run_values)} von {len(run_dirs)} Runs ausgewertet."
                     )
                 mean = statistics.mean(run_values)
-                if metric_name == "Total Tokens":
-                    summary[benchmark][model_name][metric_name] = mean
-                elif metric_name == "GPU-Temperatur (°C)":
+                standard_deviation = statistics.stdev(run_values)
+                relative_dispersion = relative_dispersion_percent(
+                    mean, standard_deviation
+                )
+                if metric_name == "GPU-Temperatur (°C)":
                     summary[benchmark][model_name][metric_name] = (
                         mean,
-                        statistics.stdev(run_values),
+                        standard_deviation,
+                        relative_dispersion,
                         max(temperature_maxima[benchmark][model_name]),
                     )
                 elif metric_name == "Lüftergeschwindigkeit (RPM)":
                     summary[benchmark][model_name][metric_name] = (
                         mean,
-                        statistics.stdev(run_values),
+                        standard_deviation,
+                        relative_dispersion,
                         max(fan_speed_maxima[benchmark][model_name]),
                     )
                 else:
                     summary[benchmark][model_name][metric_name] = (
                         mean,
-                        statistics.stdev(run_values),
+                        standard_deviation,
+                        relative_dispersion,
                     )
     return summary
 
@@ -335,10 +367,45 @@ def print_summary(
             print(f"    {model!r}: {{")
             for metric_index, (metric, value) in enumerate(metrics.items()):
                 comma = "," if metric_index < len(metrics) - 1 else ""
-                if isinstance(value, tuple):
+                if (
+                    metric == DURATION_METRIC
+                    and isinstance(value, tuple)
+                    and len(value) >= 3
+                ):
+                    formatted_value = (
+                        f"({format_duration(value[0])} ± "
+                        f"{format_duration(value[1])}; "
+                        f"{value[2]:.2f}%)"
+                    )
+                    if len(value) == 4:
+                        formatted_value += f" (Max.: {value[3]:.2f})"
+                elif (
+                    metric in ("Pass@1 (%)", "Accuracy (%)")
+                    and isinstance(value, tuple)
+                    and len(value) >= 3
+                ):
+                    formatted_value = (
+                        f"({value[0]:.2f}% ± {value[1]:.2f}%; "
+                        f"{value[2]:.2f}%)"
+                    )
+                elif isinstance(value, tuple) and len(value) >= 3:
+                    formatted_value = (
+                        f"({value[0]:.2f} ± {value[1]:.2f}; "
+                        f"{value[2]:.2f}%)"
+                    )
+                    if len(value) == 4:
+                        formatted_value += f" (Max.: {value[3]:.2f})"
+                elif isinstance(value, tuple):
                     formatted_value = (
                         f"({', '.join(f'{item:.2f}' for item in value)})"
                     )
+                elif metric in ("Pass@1 (%)", "Accuracy (%)"):
+                    if isinstance(value, tuple):
+                        formatted_value = (
+                            f"({', '.join(f'{item:.2f}%' for item in value)})"
+                        )
+                    else:
+                        formatted_value = f"{value:.2f}%"
                 else:
                     formatted_value = f"{value:.2f}"
                 print(f"      {metric!r}: {formatted_value}{comma}")
@@ -349,5 +416,232 @@ def print_summary(
     print("}")
 
 
+def export_summary_to_json(
+    summary: dict[str, dict[str, dict[str, float | tuple[float, ...]]]],
+    output_path: Path = SUMMARY_JSON_PATH,
+) -> None:
+    """Exportiert die Metriken als UTF-8-JSON mit Laufzeiten in Dezimalstunden."""
+    def serialize_metric(
+        metric_name: str, value: float | tuple[float, ...]
+    ) -> dict[str, float]:
+        if not isinstance(value, tuple):
+            return {"Mean": value}
+        if len(value) not in (2, 3, 4):
+            raise ValueError(f"Nicht unterstützte Metrikdarstellung: {value!r}.")
+
+        mean = value[0]
+        deviation = value[1]
+        if metric_name == DURATION_METRIC:
+            mean /= 3600
+            deviation /= 3600
+
+        metric: dict[str, float] = {
+            "Mean": mean,
+            "Deviation": deviation,
+        }
+        if len(value) >= 3:
+            metric["Relative Dispersion (%)"] = value[2]
+        if len(value) == 4:
+            metric["Max"] = value[3]
+        return metric
+
+    json_summary = {
+        benchmark: {
+            model: {
+                DURATION_JSON_METRIC if metric == DURATION_METRIC else metric:
+                    serialize_metric(metric, value)
+                for metric, value in metrics.items()
+            }
+            for model, metrics in models.items()
+        }
+        for benchmark, models in summary.items()
+    }
+    with output_path.open("w", encoding="utf-8") as json_file:
+        json.dump(json_summary, json_file, ensure_ascii=False, indent=2)
+        json_file.write("\n")
+
+
+def format_metric_value(
+    value: float | tuple[float, ...], metric_name: str | None = None
+) -> str:
+    """Formatiert einen Messwert für eine Matplotlib-LaTeX-Tabelle."""
+    if metric_name in ("Pass@1 (%)", "Accuracy (%)"):
+        if not isinstance(value, tuple):
+            return rf"${value:.2f}\%$"
+        if len(value) == 3:
+            mean, standard_deviation, relative_dispersion = value
+            return (
+                rf"${mean:.2f}\% \pm {standard_deviation:.2f}\%$"
+                rf"$\,({relative_dispersion:.2f}\%)$"
+            )
+    if not isinstance(value, tuple):
+        return rf"${value:.2f}$"
+    if len(value) == 2:
+        mean, standard_deviation = value
+        if metric_name == DURATION_METRIC:
+            return (
+                rf"$\mathrm{{{format_duration(mean)}}}"
+                rf"\pm \mathrm{{{format_duration(standard_deviation)}}}$"
+            )
+        return rf"${mean:.2f} \pm {standard_deviation:.2f}$"
+    if len(value) == 3:
+        mean, standard_deviation, relative_dispersion = value
+        if metric_name == DURATION_METRIC:
+            return (
+                rf"$\mathrm{{{format_duration(mean)}}}"
+                rf"\pm \mathrm{{{format_duration(standard_deviation)}}}"
+                rf"\quad({relative_dispersion:.2f}\%)$"
+            )
+        return (
+            rf"${mean:.2f} \pm {standard_deviation:.2f}$"
+            rf"$\,({relative_dispersion:.2f}\%)$"
+        )
+    if len(value) == 4:
+        mean, standard_deviation, relative_dispersion, maximum = value
+        return (
+            rf"${mean:.2f} \pm {standard_deviation:.2f}$"
+            rf"$\,({relative_dispersion:.2f}\%)$"
+            rf"$\,(\mathrm{{Max.}}\,{maximum:.2f})$"
+        )
+    raise ValueError(f"Nicht unterstützte Metrikdarstellung: {value!r}.")
+
+
+def plot_summary_as_latex_table(
+    summary: dict[str, dict[str, dict[str, float | tuple[float, ...]]]],
+) -> list[plt.Figure]:
+    """Zeigt die berechneten Metriken je Benchmark in einem eigenen Fenster."""
+    if not summary:
+        raise ValueError("Keine Zusammenfassung zum Anzeigen vorhanden.")
+
+    best_is_high = {
+        "Pass@1 (%)": True,
+        "Accuracy (%)": True,
+        "TPS": True,
+        DURATION_METRIC: False,
+        "VRAM-Verbrauch (GB)": False,
+        "GPU-Last (%)": False,
+        "GPU-Temperatur (°C)": False,
+        "RAM-Verbrauch (GB)": False,
+        "CPU-Last (%)": False,
+        "Lüftergeschwindigkeit (RPM)": False,
+        "Total Tokens": False,
+    }
+    figures = []
+    for benchmark, models in summary.items():
+        figure, axis = plt.subplots(figsize=(14, 3.2))
+        underline_cells = []
+        model_order = list(models)
+        model_2b = "Qwen3.5-2B"
+        model_2b_q4km = "Qwen3.5-2B-Q4_K_M"
+        if model_2b in model_order and model_2b_q4km in model_order:
+            index_2b = model_order.index(model_2b)
+            index_2b_q4km = model_order.index(model_2b_q4km)
+            model_order[index_2b], model_order[index_2b_q4km] = (
+                model_order[index_2b_q4km],
+                model_order[index_2b],
+            )
+        ordered_models = [(model_name, models[model_name]) for model_name in model_order]
+        available_metrics = list(next(iter(models.values())))
+        desired_metric_names = [
+            "Pass@1 (%)",
+            "Accuracy (%)",
+            "TPS",
+            DURATION_METRIC,
+            "VRAM-Verbrauch (GB)",
+            "GPU-Last (%)",
+            "GPU-Temperatur (°C)",
+            "RAM-Verbrauch (GB)",
+            "CPU-Last (%)",
+            "Lüftergeschwindigkeit (RPM)",
+            "Total Tokens",
+        ]
+        metric_names = [
+            metric_name
+            for metric_name in desired_metric_names
+            if metric_name in available_metrics
+        ]
+        metric_names.extend(
+            metric_name
+            for metric_name in available_metrics
+            if metric_name not in metric_names
+        )
+        best_model_indexes = {}
+        table_rows = []
+
+        for metric_name in metric_names:
+            if metric_name in best_is_high:
+                values = [
+                    metrics[metric_name][0]
+                    if isinstance(metrics[metric_name], tuple)
+                    else metrics[metric_name]
+                    for _, metrics in ordered_models
+                ]
+                best_value = (
+                    max(values) if best_is_high[metric_name] else min(values)
+                )
+                best_model_indexes[metric_name] = {
+                    index for index, value in enumerate(values)
+                    if value == best_value
+                }
+
+            row = [metric_name]
+            row.extend(
+                format_metric_value(metrics[metric_name], metric_name)
+                for _, metrics in ordered_models
+            )
+            table_rows.append(row)
+
+        axis.axis("off")
+        table = axis.table(
+            cellText=table_rows,
+            colLabels=["Metrik", *model_order],
+            loc="center",
+            cellLoc="center",
+            colWidths=[0.28, *([0.72 / len(model_order)] * len(model_order))],
+        )
+        table.auto_set_font_size(False)
+        table.set_fontsize(9)
+        table.scale(1.0, 1.35)
+
+        for (row_index, column_index), cell in table.get_celld().items():
+            if row_index == 0:
+                cell.set_facecolor("#D9E2F3")
+                cell.set_text_props(weight="bold")
+            elif column_index == 0:
+                cell.set_facecolor("#F2F2F2")
+                cell.set_text_props(weight="bold")
+            elif column_index - 1 in best_model_indexes.get(
+                metric_names[row_index - 1], set()
+            ):
+                cell.set_text_props(weight="bold")
+                underline_cells.append((axis, cell))
+
+        figure.suptitle(rf"{{{benchmark}}}", fontsize=14, y=1.0)
+        figure.tight_layout()
+        figure.canvas.draw()
+        renderer = figure.canvas.get_renderer()
+        for underline_axis, cell in underline_cells:
+            text_bounds = cell.get_text().get_window_extent(renderer)
+            line_y = text_bounds.y0 - 1
+            line_points = underline_axis.transAxes.inverted().transform(
+                [(text_bounds.x0, line_y), (text_bounds.x1, line_y)]
+            )
+            underline_axis.plot(
+                line_points[:, 0],
+                line_points[:, 1],
+                color=cell.get_text().get_color(),
+                linewidth=1,
+                transform=underline_axis.transAxes,
+                clip_on=False,
+            )
+        figures.append(figure)
+    return figures
+
+
 if __name__ == "__main__":
-    print_summary(evaluate_bench_data())
+    summary = evaluate_bench_data()
+    print_summary(summary)
+    export_summary_to_json(summary)
+    print(f"JSON-Ergebnis gespeichert: {SUMMARY_JSON_PATH}")
+    plot_summary_as_latex_table(summary)
+    plt.show()

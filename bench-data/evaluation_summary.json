@@ -1,0 +1,494 @@
+{
+  "HumanEval": {
+    "Qwen3.5-2B": {
+      "Pass@1 (%)": {
+        "Mean": 39.63414634146341,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 23.66484756097561,
+        "Deviation": 0.010304787847780241,
+        "Relative Dispersion (%)": 0.04354470410691889
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 0.30972222222222223,
+        "Deviation": 0.009622504486493764,
+        "Relative Dispersion (%)": 3.106817592051798
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 4.72054054054054,
+        "Deviation": 0.059112779261538184,
+        "Relative Dispersion (%)": 1.2522459822952667
+      },
+      "GPU-Last (%)": {
+        "Mean": 100.0,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 57.93797643797644,
+        "Deviation": 0.29856006867277257,
+        "Relative Dispersion (%)": 0.5153097968348723,
+        "Max": 62.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 14.972752367752367,
+        "Deviation": 0.43163717144142155,
+        "Relative Dispersion (%)": 2.8828178069054426
+      },
+      "CPU-Last (%)": {
+        "Mean": 6.369194964194964,
+        "Deviation": 0.14448580147855875,
+        "Relative Dispersion (%)": 2.2685096356886456
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 1118.6361746361747,
+        "Deviation": 3.325537341798054,
+        "Relative Dispersion (%)": 0.29728498122990277,
+        "Max": 1350.0
+      },
+      "Total Tokens": {
+        "Mean": 11180.984075162158,
+        "Deviation": 315.4696633647745,
+        "Relative Dispersion (%)": 2.8214838805250624
+      }
+    },
+    "Qwen3.5-2B-Q4_K_M": {
+      "Pass@1 (%)": {
+        "Mean": 34.146341463414636,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 22.237225609756095,
+        "Deviation": 0.003492417638786552,
+        "Relative Dispersion (%)": 0.01570527591919709
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 0.36527777777777776,
+        "Deviation": 0.009622504486493764,
+        "Relative Dispersion (%)": 2.634297806188407
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 2.480566752799311,
+        "Deviation": 0.1343242905013248,
+        "Relative Dispersion (%)": 5.415064535140621
+      },
+      "GPU-Last (%)": {
+        "Mean": 100.0,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 56.144788975021534,
+        "Deviation": 0.6255841347949703,
+        "Relative Dispersion (%)": 1.1142336559022223,
+        "Max": 61.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 13.912880275624461,
+        "Deviation": 0.48953643097129856,
+        "Relative Dispersion (%)": 3.5185843712676266
+      },
+      "CPU-Last (%)": {
+        "Mean": 8.009633074935401,
+        "Deviation": 1.1099293136014126,
+        "Relative Dispersion (%)": 13.857430212062047
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 1111.1738156761412,
+        "Deviation": 1.0760480580348402,
+        "Relative Dispersion (%)": 0.09683886020838897,
+        "Max": 1196.0
+      },
+      "Total Tokens": {
+        "Mean": 12542.45901714918,
+        "Deviation": 155.0150629902929,
+        "Relative Dispersion (%)": 1.2359224198248713
+      }
+    },
+    "Qwen3.5-9B Q4_K_M": {
+      "Pass@1 (%)": {
+        "Mean": 70.1219512195122,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 17.310274390243904,
+        "Deviation": 0.018151948468265497,
+        "Relative Dispersion (%)": 0.10486228039513898
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 0.3375,
+        "Deviation": 0.016666666666666666,
+        "Relative Dispersion (%)": 4.938271604938271
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 6.107215961041542,
+        "Deviation": 0.0552443595453977,
+        "Relative Dispersion (%)": 0.9045751762800961
+      },
+      "GPU-Last (%)": {
+        "Mean": 99.27548007233203,
+        "Deviation": 0.2550071788945651,
+        "Relative Dispersion (%)": 0.25686824048472706
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 61.177955214256976,
+        "Deviation": 0.5189929629771503,
+        "Relative Dispersion (%)": 0.848333294500506,
+        "Max": 66.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 15.06286399930189,
+        "Deviation": 0.08151107479380958,
+        "Relative Dispersion (%)": 0.541139286642881
+      },
+      "CPU-Last (%)": {
+        "Mean": 7.26098680861585,
+        "Deviation": 0.8703781176930105,
+        "Relative Dispersion (%)": 11.987049978664393
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 1594.0435664732317,
+        "Deviation": 14.789374530222057,
+        "Relative Dispersion (%)": 0.9277898572711569,
+        "Max": 1808.0
+      },
+      "Total Tokens": {
+        "Mean": 6683.697673893405,
+        "Deviation": 456.18221638809274,
+        "Relative Dispersion (%)": 6.825296993458357
+      }
+    }
+  },
+  "MATH-500": {
+    "Qwen3.5-2B": {
+      "Accuracy (%)": {
+        "Mean": 49.2,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 23.200299759519037,
+        "Deviation": 0.356547880187085,
+        "Relative Dispersion (%)": 1.5368244543512595
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 8.727777777777778,
+        "Deviation": 0.2358985971729127,
+        "Relative Dispersion (%)": 2.7028483444382108
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 4.973321635561455,
+        "Deviation": 0.21942374796357075,
+        "Relative Dispersion (%)": 4.412016033602042
+      },
+      "GPU-Last (%)": {
+        "Mean": 99.72564931565901,
+        "Deviation": 0.2385933404971704,
+        "Relative Dispersion (%)": 0.23924972375156678
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 59.001380731541126,
+        "Deviation": 1.043589905480774,
+        "Relative Dispersion (%)": 1.768755057155618,
+        "Max": 62.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 13.904837773289543,
+        "Deviation": 0.5952468500415194,
+        "Relative Dispersion (%)": 4.280861522778475
+      },
+      "CPU-Last (%)": {
+        "Mean": 6.347995145358304,
+        "Deviation": 1.4562078592463954,
+        "Relative Dispersion (%)": 22.9396498563989
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 1094.7092761300437,
+        "Deviation": 7.276292845694059,
+        "Relative Dispersion (%)": 0.6646781026115729,
+        "Max": 1395.0
+      },
+      "Total Tokens": {
+        "Mean": 332041.25960756675,
+        "Deviation": 432.8958804655216,
+        "Relative Dispersion (%)": 0.13037412307649748
+      }
+    },
+    "Qwen3.5-2B-Q4_K_M": {
+      "Accuracy (%)": {
+        "Mean": 34.4,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 22.0001306005224,
+        "Deviation": 0.06835340583157175,
+        "Relative Dispersion (%)": 0.31069545482583943
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 9.755555555555556,
+        "Deviation": 0.33554819712314443,
+        "Relative Dispersion (%)": 3.439560107184852
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 2.5905165527017755,
+        "Deviation": 0.23894562356047894,
+        "Relative Dispersion (%)": 9.223860133658322
+      },
+      "GPU-Last (%)": {
+        "Mean": 99.55482823293904,
+        "Deviation": 0.6562659892625471,
+        "Relative Dispersion (%)": 0.659200564062058
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 56.50764841221661,
+        "Deviation": 0.5366390814085732,
+        "Relative Dispersion (%)": 0.9496751262658367,
+        "Max": 63.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 13.548838070602656,
+        "Deviation": 0.5933534853044801,
+        "Relative Dispersion (%)": 4.379368047743503
+      },
+      "CPU-Last (%)": {
+        "Mean": 7.199744848871434,
+        "Deviation": 0.3288017177506879,
+        "Relative Dispersion (%)": 4.566852362861551
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 1094.428914713464,
+        "Deviation": 12.653899819140985,
+        "Relative Dispersion (%)": 1.1562102982681102,
+        "Max": 1347.0
+      },
+      "Total Tokens": {
+        "Mean": 355620.70873990306,
+        "Deviation": 3298.669821229507,
+        "Relative Dispersion (%)": 0.927580914204329
+      }
+    },
+    "Qwen3.5-9B Q4_K_M": {
+      "Accuracy (%)": {
+        "Mean": 82.19999999999999,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 17.043286666666667,
+        "Deviation": 0.06318027012709979,
+        "Relative Dispersion (%)": 0.37070473179723035
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 9.494444444444444,
+        "Deviation": 0.07515416254704824,
+        "Relative Dispersion (%)": 0.7915593480672137
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 6.1788197706332175,
+        "Deviation": 0.08912662044143979,
+        "Relative Dispersion (%)": 1.4424537978117125
+      },
+      "GPU-Last (%)": {
+        "Mean": 99.66708790818801,
+        "Deviation": 0.28358456009069677,
+        "Relative Dispersion (%)": 0.28453180086081287
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 62.056748980283885,
+        "Deviation": 0.18843452062229993,
+        "Relative Dispersion (%)": 0.3036487146340322,
+        "Max": 66.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 13.797652772391313,
+        "Deviation": 0.3628200696220519,
+        "Relative Dispersion (%)": 2.6295782015042724
+      },
+      "CPU-Last (%)": {
+        "Mean": 6.2090968078058335,
+        "Deviation": 1.7918340889523932,
+        "Relative Dispersion (%)": 28.85820827756735
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 1603.683940350408,
+        "Deviation": 92.52622659789319,
+        "Relative Dispersion (%)": 5.769604862269558,
+        "Max": 1803.0
+      },
+      "Total Tokens": {
+        "Mean": 269568.6212540616,
+        "Deviation": 180.2199816880827,
+        "Relative Dispersion (%)": 0.06685495546539519
+      }
+    }
+  },
+  "MMLU-Pro-500": {
+    "Qwen3.5-2B": {
+      "Accuracy (%)": {
+        "Mean": 26.785714285714285,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 22.49894027590239,
+        "Deviation": 0.09217927515169368,
+        "Relative Dispersion (%)": 0.40970496397300443
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 0.3736111111111111,
+        "Deviation": 0.06364688465216445,
+        "Relative Dispersion (%)": 17.035597379017993
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 4.624296324147388,
+        "Deviation": 0.09127820942207475,
+        "Relative Dispersion (%)": 1.9738832251175924
+      },
+      "GPU-Last (%)": {
+        "Mean": 86.22253818876159,
+        "Deviation": 11.931647674045283,
+        "Relative Dispersion (%)": 13.838200457430371
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 52.20915719319975,
+        "Deviation": 5.254393700878898,
+        "Relative Dispersion (%)": 10.064122815534137,
+        "Max": 62.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 14.54465495569219,
+        "Deviation": 0.1591890076775145,
+        "Relative Dispersion (%)": 1.0944845935668923
+      },
+      "CPU-Last (%)": {
+        "Mean": 6.197557504312823,
+        "Deviation": 0.9150657893250921,
+        "Relative Dispersion (%)": 14.764942296837201
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 987.7788793294113,
+        "Deviation": 119.87157559474888,
+        "Relative Dispersion (%)": 12.135466560707183,
+        "Max": 1235.0
+      },
+      "Total Tokens": {
+        "Mean": 4010.2459016473886,
+        "Deviation": 5942.407065104719,
+        "Relative Dispersion (%)": 148.18061562418424
+      }
+    },
+    "Qwen3.5-2B-Q4_K_M": {
+      "Accuracy (%)": {
+        "Mean": 28.968253968253972,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 21.247138062169313,
+        "Deviation": 0.026609616244306536,
+        "Relative Dispersion (%)": 0.12523859056427536
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 0.4,
+        "Deviation": 0.043898557303553076,
+        "Relative Dispersion (%)": 10.974639325888269
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 2.4297944073086746,
+        "Deviation": 0.09740717405319926,
+        "Relative Dispersion (%)": 4.00886485540523
+      },
+      "GPU-Last (%)": {
+        "Mean": 86.31625977493802,
+        "Deviation": 11.949966450038895,
+        "Relative Dispersion (%)": 13.844397893510877
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 51.740411356892245,
+        "Deviation": 3.732915949430727,
+        "Relative Dispersion (%)": 7.214700949480318,
+        "Max": 60.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 14.051172149798846,
+        "Deviation": 0.6105341203437556,
+        "Relative Dispersion (%)": 4.345076082157999
+      },
+      "CPU-Last (%)": {
+        "Mean": 5.767250575518188,
+        "Deviation": 1.8066863787942016,
+        "Relative Dispersion (%)": 31.326649590422388
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 962.531394387792,
+        "Deviation": 139.35843212877617,
+        "Relative Dispersion (%)": 14.478325895792068,
+        "Max": 1194.0
+      },
+      "Total Tokens": {
+        "Mean": 4568.79558270943,
+        "Deviation": 6876.531702758703,
+        "Relative Dispersion (%)": 150.5108201553793
+      }
+    },
+    "Qwen3.5-9B Q4_K_M": {
+      "Accuracy (%)": {
+        "Mean": 51.98412698412699,
+        "Deviation": 0.0,
+        "Relative Dispersion (%)": 0.0
+      },
+      "TPS": {
+        "Mean": 16.48357422855598,
+        "Deviation": 0.07410500875785293,
+        "Relative Dispersion (%)": 0.4495688115352685
+      },
+      "Ausführungsdauer/E2E (Stunden)": {
+        "Mean": 0.5208333333333334,
+        "Deviation": 0.15898986690282427,
+        "Relative Dispersion (%)": 30.52605444534226
+      },
+      "VRAM-Verbrauch (GB)": {
+        "Mean": 6.12366901065449,
+        "Deviation": 0.07770195066229935,
+        "Relative Dispersion (%)": 1.2688790090892692
+      },
+      "GPU-Last (%)": {
+        "Mean": 81.37051163826706,
+        "Deviation": 15.377918736542775,
+        "Relative Dispersion (%)": 18.898638372713418
+      },
+      "GPU-Temperatur (°C)": {
+        "Mean": 58.106994839811414,
+        "Deviation": 2.894367068462162,
+        "Relative Dispersion (%)": 4.981099222978773,
+        "Max": 66.0
+      },
+      "RAM-Verbrauch (GB)": {
+        "Mean": 15.011073467720978,
+        "Deviation": 0.017672370018142022,
+        "Relative Dispersion (%)": 0.11772888898414731
+      },
+      "CPU-Last (%)": {
+        "Mean": 6.784568920072762,
+        "Deviation": 0.9073826713414908,
+        "Relative Dispersion (%)": 13.374212599667414
+      },
+      "Lüftergeschwindigkeit (RPM)": {
+        "Mean": 1329.454870252812,
+        "Deviation": 227.7470426999262,
+        "Relative Dispersion (%)": 17.130859256367035,
+        "Max": 1796.0
+      },
+      "Total Tokens": {
+        "Mean": 2704.5870799563486,
+        "Deviation": 3797.51146475552,
+        "Relative Dispersion (%)": 140.41002757496022
+      }
+    }
+  }
+}

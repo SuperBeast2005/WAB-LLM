@@ -119,3 +119,15 @@ Lüftergeschwindigkeit enthalten zusätzlich den höchsten erfassten Wert.
 `TIGER-Lab/MMLU-Pro`, zieht mit Seed `42` bis zu 36 Aufgaben je Kategorie und
 speichert das Ergebnis als JSONL-Datei im aktuellen Arbeitsverzeichnis. Dazu
 werden die Python-Pakete `datasets` und `pandas` benötigt.
+
+## MMLU-Pro-Kategorieanalyse
+
+```powershell
+python src\analyze_mmlu_categories.py
+```
+
+Die Analyse schreibt fünf flache JSON-Dateien für Excel nach
+`mmlu_chart_data`: eine Datei je Modell sowie Dateien für die
+Aufgabenverteilung und den Anteil korrekter Targets. Die beiden
+Kategorieverteilungen enthalten Anteile in Prozent; die Target-Datei enthält
+zusätzlich die Standardabweichung zwischen den Modellen.

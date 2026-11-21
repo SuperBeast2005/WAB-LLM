@@ -1,0 +1,86 @@
+[
+  {
+    "category": "law",
+    "correct_target_count": 99,
+    "share_percent": 6.077348066298343,
+    "model_share_standard_deviation_percent": 1.2969143116334452
+  },
+  {
+    "category": "psychology",
+    "correct_target_count": 165,
+    "share_percent": 10.128913443830571,
+    "model_share_standard_deviation_percent": 0.9512245950164333
+  },
+  {
+    "category": "business",
+    "correct_target_count": 42,
+    "share_percent": 2.578268876611418,
+    "model_share_standard_deviation_percent": 2.350896384414497
+  },
+  {
+    "category": "history",
+    "correct_target_count": 147,
+    "share_percent": 9.023941068139964,
+    "model_share_standard_deviation_percent": 1.7432566866006358
+  },
+  {
+    "category": "philosophy",
+    "correct_target_count": 111,
+    "share_percent": 6.8139963167587485,
+    "model_share_standard_deviation_percent": 0.8082205713467332
+  },
+  {
+    "category": "health",
+    "correct_target_count": 102,
+    "share_percent": 6.261510128913445,
+    "model_share_standard_deviation_percent": 1.4499565155771887
+  },
+  {
+    "category": "biology",
+    "correct_target_count": 201,
+    "share_percent": 12.338858195211786,
+    "model_share_standard_deviation_percent": 0.7648189968414866
+  },
+  {
+    "category": "chemistry",
+    "correct_target_count": 69,
+    "share_percent": 4.23572744014733,
+    "model_share_standard_deviation_percent": 0.4386220527989118
+  },
+  {
+    "category": "math",
+    "correct_target_count": 120,
+    "share_percent": 7.366482504604052,
+    "model_share_standard_deviation_percent": 0.14141131717833777
+  },
+  {
+    "category": "physics",
+    "correct_target_count": 114,
+    "share_percent": 6.998158379373849,
+    "model_share_standard_deviation_percent": 0.3163503028787115
+  },
+  {
+    "category": "economics",
+    "correct_target_count": 165,
+    "share_percent": 10.128913443830571,
+    "model_share_standard_deviation_percent": 1.5239044597342004
+  },
+  {
+    "category": "computer science",
+    "correct_target_count": 75,
+    "share_percent": 4.6040515653775325,
+    "model_share_standard_deviation_percent": 3.398529930416058
+  },
+  {
+    "category": "engineering",
+    "correct_target_count": 96,
+    "share_percent": 5.893186003683241,
+    "model_share_standard_deviation_percent": 0.6266634952693988
+  },
+  {
+    "category": "other",
+    "correct_target_count": 123,
+    "share_percent": 7.550644567219153,
+    "model_share_standard_deviation_percent": 1.7729942577912228
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "law",
+    "target_mean_percent": 27.77777777777778,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "psychology",
+    "target_mean_percent": 36.11111111111111,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "business",
+    "target_mean_percent": 5.555555555555555,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "history",
+    "target_mean_percent": 38.88888888888889,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "philosophy",
+    "target_mean_percent": 30.555555555555557,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "health",
+    "target_mean_percent": 30.555555555555557,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "biology",
+    "target_mean_percent": 50.0,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "chemistry",
+    "target_mean_percent": 16.666666666666664,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "math",
+    "target_mean_percent": 30.555555555555557,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "physics",
+    "target_mean_percent": 27.77777777777778,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "economics",
+    "target_mean_percent": 47.22222222222222,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "computer science",
+    "target_mean_percent": 8.333333333333332,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "engineering",
+    "target_mean_percent": 22.22222222222222,
+    "target_standard_deviation_percent": 0.0
+  },
+  {
+    "model": "Qwen3.5-2B_Q4_K_M",
+    "category": "other",
+    "target_mean_percent": 33.33333333333333,
+    "target_standard_deviation_percent": 0.0
+  }
+]

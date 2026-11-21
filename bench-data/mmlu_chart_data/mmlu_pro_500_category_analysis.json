@@ -1,0 +1,364 @@
+{
+  "benchmark": "MMLU-Pro-500",
+  "runs": [
+    "Run-0",
+    "Run-1",
+    "Run-2"
+  ],
+  "models": {
+    "Qwen3.5-2B": {
+      "run_count": 3,
+      "total_tasks": 1512,
+      "categories": {
+        "biology": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 54,
+          "target_mean_percent": 50.0,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "business": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 0,
+          "target_mean_percent": 0.0,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "chemistry": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 15,
+          "target_mean_percent": 13.88888888888889,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "computer science": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 6,
+          "target_mean_percent": 5.555555555555555,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "economics": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 45,
+          "target_mean_percent": 41.66666666666667,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "engineering": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 27,
+          "target_mean_percent": 25.0,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "health": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 30,
+          "target_mean_percent": 27.77777777777778,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "history": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 45,
+          "target_mean_percent": 41.66666666666667,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "law": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 18,
+          "target_mean_percent": 16.666666666666664,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "math": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 30,
+          "target_mean_percent": 27.77777777777778,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "other": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 39,
+          "target_mean_percent": 36.11111111111111,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "philosophy": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 24,
+          "target_mean_percent": 22.22222222222222,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "physics": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 30,
+          "target_mean_percent": 27.77777777777778,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "psychology": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 42,
+          "target_mean_percent": 38.88888888888889,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        }
+      }
+    },
+    "Qwen3.5-2B_Q4_K_M": {
+      "run_count": 3,
+      "total_tasks": 1512,
+      "categories": {
+        "biology": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 54,
+          "target_mean_percent": 50.0,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "business": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 6,
+          "target_mean_percent": 5.555555555555555,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "chemistry": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 18,
+          "target_mean_percent": 16.666666666666664,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "computer science": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 9,
+          "target_mean_percent": 8.333333333333332,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "economics": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 51,
+          "target_mean_percent": 47.22222222222222,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "engineering": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 24,
+          "target_mean_percent": 22.22222222222222,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "health": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 33,
+          "target_mean_percent": 30.555555555555557,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "history": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 42,
+          "target_mean_percent": 38.88888888888889,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "law": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 30,
+          "target_mean_percent": 27.77777777777778,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "math": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 33,
+          "target_mean_percent": 30.555555555555557,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "other": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 36,
+          "target_mean_percent": 33.33333333333333,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "philosophy": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 33,
+          "target_mean_percent": 30.555555555555557,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "physics": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 30,
+          "target_mean_percent": 27.77777777777778,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "psychology": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 39,
+          "target_mean_percent": 36.11111111111111,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        }
+      }
+    },
+    "Qwen3.5-9B-Q4_K_M": {
+      "run_count": 3,
+      "total_tasks": 1512,
+      "categories": {
+        "biology": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 93,
+          "target_mean_percent": 86.11111111111111,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "business": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 36,
+          "target_mean_percent": 33.33333333333333,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "chemistry": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 36,
+          "target_mean_percent": 33.33333333333333,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "computer science": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 60,
+          "target_mean_percent": 55.55555555555556,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "economics": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 69,
+          "target_mean_percent": 63.888888888888886,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "engineering": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 45,
+          "target_mean_percent": 41.66666666666667,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "health": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 39,
+          "target_mean_percent": 36.11111111111111,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "history": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 60,
+          "target_mean_percent": 55.55555555555556,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "law": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 51,
+          "target_mean_percent": 47.22222222222222,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "math": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 57,
+          "target_mean_percent": 52.77777777777778,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "other": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 48,
+          "target_mean_percent": 44.44444444444444,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "philosophy": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 54,
+          "target_mean_percent": 50.0,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "physics": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 54,
+          "target_mean_percent": 50.0,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        },
+        "psychology": {
+          "task_count": 108,
+          "task_share_percent": 7.142857142857142,
+          "target_reached_count": 84,
+          "target_mean_percent": 77.77777777777779,
+          "target_deviation_percent": 0.0,
+          "target_relative_dispersion_percent": 0.0
+        }
+      }
+    }
+  }
+}
